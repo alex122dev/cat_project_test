@@ -1,0 +1,43 @@
+.body {
+    display: flex;
+
+    &:not(:last-child) {
+        margin-bottom: 20px;
+    }
+
+    >* {
+        &:not(:last-child) {
+            margin-right: 10px;
+        }
+    }
+}
+
+.btn {
+    height: 40px;
+    border-radius: 10px;
+    padding: 5px 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease 0s;
+
+    font-weight: 500;
+    font-size: 20px;
+    text-transform: uppercase;
+
+    background-color: #FBE0DC;
+    color: #FF868E;
+
+
+    &.active {
+        background-color: #FF868E;
+        color: #fff;
+    }
+
+    @media (any-hover: hover) {
+        &:hover {
+            background-color: #FF868E;
+            color: #fff;
+        }
+    }
+}

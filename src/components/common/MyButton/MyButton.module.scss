@@ -1,0 +1,67 @@
+.btn {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+    background-color: #fff;
+    transition: all 0.3s ease 0s;
+
+    &.small {
+        height: 40px;
+        width: 40px;
+        font-size: 20px;
+        padding: 10px;
+        border-radius: 10px;
+    }
+
+    &.big {
+        height: 60px;
+        width: 60px;
+        font-size: 30px;
+        padding: 15px;
+        border-radius: 20px;
+
+        &.white {
+            @media (any-hover: hover) {
+                &:hover {
+                    background-color: #FBE0DC;
+
+                    &::before {
+                        color: #FF868E;
+                    }
+                }
+            }
+        }
+    }
+
+    &.pink {
+        background-color: #FBE0DC;
+    }
+
+    &::before {
+        transition: all 0.3s ease 0s;
+        color: #FF868E;
+    }
+
+    @media (any-hover: hover) {
+        &:hover {
+            background-color: #FF868E;
+
+            &::before {
+                color: #fff;
+            }
+        }
+    }
+
+    &:disabled {
+        background-color: rgba(128, 128, 128, 0.197);
+        color: #fff;
+
+        &::before {
+            color: rgb(185, 185, 185);
+        }
+    }
+}

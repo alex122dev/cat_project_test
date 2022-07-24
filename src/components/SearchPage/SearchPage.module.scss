@@ -1,0 +1,15 @@
+.container {}
+
+.text {
+    font-size: 20px;
+    color: #8C8C8C;
+
+    &:not(:last-child) {
+        margin-bottom: 20px;
+    }
+
+    span {
+        font-weight: 500;
+        color: #1D1D1D;
+    }
+}
