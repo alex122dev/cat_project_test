@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/cat_project_test/static/css/main.c5b8d8b8.css",
+    "main.js": "/cat_project_test/static/js/main.e745594c.js",
+    "static/media/girl-and-pet 1.png": "/cat_project_test/static/media/girl-and-pet 1.1927e13f60069098098c.png",
+    "static/media/images-search.png": "/cat_project_test/static/media/images-search.8efc5d48c246a2e7ee34.png",
+    "static/media/vote-table.png": "/cat_project_test/static/media/vote-table.dd0af052848c8530843b.png",
+    "static/media/pet-breeds.png": "/cat_project_test/static/media/pet-breeds.2591855447e8ff2284a0.png",
+    "static/media/icons.svg?34ck8f": "/cat_project_test/static/media/icons.a3453b0add41a857c290.svg",
+    "static/media/icons.eot?34ck8f": "/cat_project_test/static/media/icons.7ba010413b1b1ac4781d.eot",
+    "static/media/icons.woff?34ck8f": "/cat_project_test/static/media/icons.9dac8cbfcbc6e9c091e6.woff",
+    "static/media/icons.ttf?34ck8f": "/cat_project_test/static/media/icons.4942989eb122056935a6.ttf",
+    "index.html": "/cat_project_test/index.html",
+    "main.c5b8d8b8.css.map": "/cat_project_test/static/css/main.c5b8d8b8.css.map",
+    "main.e745594c.js.map": "/cat_project_test/static/js/main.e745594c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c5b8d8b8.css",
+    "static/js/main.e745594c.js"
+  ]
+}
