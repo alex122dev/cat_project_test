@@ -9,7 +9,7 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-  <HashRouter> //* only for normal working in githud
+  <HashRouter> {/* only for normal working in githud */}
     <Provider store={store}>
       <App />
     </Provider>
