@@ -17,9 +17,9 @@ export const BreedsContainer = () => {
 
     return (
         <div className={styles.breedsContainer}>
-            <div>
+            <div className={styles.topBlock}>
                 <Breadcrumbs />
-                {location.pathname === '/breeds'}
+                {/* {location.pathname === '/breeds' && } */}
             </div>
             <Outlet />
         </div>

@@ -2,7 +2,7 @@
     height: 100%;
 }
 
-.container {
+/* .container {
     position: relative;
     height: 100%;
 
@@ -10,6 +10,12 @@
         &:not(:last-child) {
             margin-bottom: 20px;
         }
+    }
+} */
+
+.topBlock {
+    &:not(:last-child) {
+        margin-bottom: 20px;
     }
 }
 
