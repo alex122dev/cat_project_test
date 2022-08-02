@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { BreedType } from "../../../api/breedsAPI"
 import { useTypedDispatch, useTypedSelector } from "../../../hooks/redux"
 import { getImageForBreedsSlider } from "../../../redux/reducers/breeds-reducer"
@@ -28,6 +28,16 @@ export const BreedItem: React.FC<PropsType> = ({ selectedBreed }) => {
     const breedsSliderImages = useTypedSelector(state => state.breedsRD.breedsSliderImages)
     const isFetching = useTypedSelector(state => state.breedsRD.isFetching)
 
+    const [firstImageReady, setFirstImageReady] = useState(false)
+
+    if (breedsSliderImages.length > 0) {
+        const firstImage = new Image()
+        firstImage.src = breedsSliderImages[0].url
+        firstImage.onload = function () {
+            setFirstImageReady(true)
+        }
+    }
+
 
     const elementsForSlider = breedsSliderImages.map(item => <div className={styles.image}>
         <img src={item.url} alt="" />
@@ -35,11 +45,11 @@ export const BreedItem: React.FC<PropsType> = ({ selectedBreed }) => {
 
     useEffect(() => {
         dispatch(getImageForBreedsSlider(selectedBreed.id, 5))
-    }, [])
+    }, [selectedBreed])
 
     return (
         <div className={styles.container}>
-            {isFetching
+            {isFetching || !firstImageReady
                 ? <Preloader className={styles.preloader} />
                 : <BreedsSlider elements={elementsForSlider} className={styles.slider} />}
             <div className={styles.contentBlock}>

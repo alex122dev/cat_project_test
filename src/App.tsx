@@ -5,6 +5,7 @@ import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import './App.scss';
 import { Breeds } from './components/Breeds/Breeds';
 import { BreedsContainer } from './components/Breeds/BreedsContainer';
+import { BreedsPage } from './components/Breeds/BreedsPage';
 import { SelectedBreed } from './components/Breeds/SelectedBreed/SelectedBreed';
 import { Dislikes } from './components/Dislikes/Dislikes';
 import { Favourites } from './components/Favourites/Favourites';
@@ -45,8 +46,8 @@ function App() {
             <Routes>
               <Route path='/home' element={isDesktop && <Home />} />
               <Route path='/voting' element={<Voting />} />
-              <Route path='/breeds' element={<BreedsContainer />}>
-                <Route path='' element={<Breeds breeds={breeds} />} />
+              <Route path='/breeds' element={<BreedsPage />}>
+                <Route path='' element={<BreedsContainer />} />
                 <Route path=':breedId' element={<SelectedBreed />} />
               </Route>
               <Route path='/gallery' element={<Gallery />} />

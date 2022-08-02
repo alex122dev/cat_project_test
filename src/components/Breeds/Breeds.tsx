@@ -23,7 +23,7 @@ export const Breeds: React.FC<BreedsPropsType> = ({ breeds }) => {
 
     const gridItems = breeds.filter(item => item.image).map(breed => <BreedsImage item={breed} />)
 
-    console.log(gridItems);
+    //console.log(gridItems);
 
 
     const gridBlocks = []

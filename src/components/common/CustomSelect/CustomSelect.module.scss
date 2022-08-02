@@ -1,0 +1,124 @@
+.body {
+    position: relative;
+    user-select: none;
+
+    width: 100px;
+
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.btn {
+    width: 100%;
+    padding: 6px 10px;
+    font-size: 16px;
+    line-height: 24px;
+    color: #8C8C8C;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: #F8F8F7;
+    border-radius: 10px;
+    border: 2px solid transparent;
+
+    @media (any-hover: hover) {
+        &:hover {
+            border-color: #FBE0DC;
+        }
+    }
+
+    .arrow {
+        width: 16px;
+        height: 16px;
+        flex: 0 0 16px;
+
+        transition: all 0.3s ease 0s;
+        transform: rotate(-90deg);
+
+        .active & {
+            transform: rotate(90deg);
+        }
+    }
+}
+
+.chosen {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    padding-right: 10px;
+}
+
+.content {
+    position: absolute;
+    z-index: 5;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease 0s;
+
+    //overflow-x: auto;
+    max-width: calc(100vw - 60px);
+
+    max-height: 100vh;
+    overflow-y: auto;
+    //width: 100%;
+    padding: 20px;
+    background: #FFFFFF;
+    border-radius: 30px;
+
+    border: 1px solid #000;
+
+    .active & {
+        pointer-events: all;
+        top: 110%;
+        opacity: 1;
+    }
+}
+
+.option {
+    cursor: pointer;
+    color: #8C8C8C;
+
+    white-space: nowrap;
+    word-wrap: break-word;
+
+    &:not(:last-child) {
+        margin-bottom: 10px;
+    }
+
+    @media (any-hover: hover) {
+        &:hover {
+            background-color: #F8F8F7;
+            color: #1D1D1D;
+        }
+    }
+}
+
+.content::-webkit-scrollbar {
+    width: .5em;
+    height: 1em;
+}
+
+.content::-webkit-scrollbar-track {
+    background-color: rgba(211, 211, 211, 0.3);
+    border-radius: 100vw;
+    margin: 30px 0;
+
+}
+
+.content::-webkit-scrollbar-track:hover {
+    background-color: rgba(211, 211, 211, 0.5);
+}
+
+.content::-webkit-scrollbar-thumb {
+    background-color: #FBE0DC;
+    border-radius: 100vw;
+}
+
+.content::-webkit-scrollbar-thumb:hover {
+    background-color: #FF868E;
+}

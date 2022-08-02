@@ -9,6 +9,7 @@ $fontSize: 16px;
 $mainColor: #1D1D1D;
 $greyColor: #8C8C8C;
 
+@import './scrollbar.scss';
 @import './null.scss';
 @import './mixins.scss';
 @import './swiper.scss';

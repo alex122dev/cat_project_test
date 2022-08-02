@@ -56,7 +56,7 @@ export const getAllBreeds = (): ThunkType => async (dispatch) => {
     try {
         dispatch(actions.setIsFetching(true))
         const breeds = await breedsAPI.getAllBreeds()
-        //console.log(breeds);
+        console.log('getAllBreeds: ', breeds);
 
         dispatch(actions.setAllbreeds(breeds))
         dispatch(actions.setIsFetching(false))
@@ -70,7 +70,7 @@ export const getImageForBreedsSlider = (breed_id: string, limit = 5): ThunkType 
     try {
         dispatch(actions.setIsFetching(true))
         const data = await imagesAPI.getRandomImage(limit, breed_id)
-        //console.log('getImageForBreedsSlider: ', data);
+        console.log('getImageForBreedsSlider: ', data);
         dispatch(actions.setBreedsSlider(data))
         dispatch(actions.setIsFetching(false))
     } catch (error) {
