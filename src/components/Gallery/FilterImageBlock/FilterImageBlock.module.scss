@@ -1,0 +1,36 @@
+.formBody {
+    background-color: #F8F8F7;
+    padding: 10px 20px 20px 20px;
+    border-radius: 20px;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+
+    &:not(:last-child) {
+        margin-bottom: 10px;
+    }
+}
+
+
+.column {
+    flex: 0 0 calc(50% - 10px);
+
+    &WithBtn {
+        display: flex;
+        align-items: flex-end;
+        column-gap: 10px;
+    }
+}
+
+.item {
+    width: 100%;
+}
+
+.label {
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 18px;
+    color: #8C8C8C;
+}

@@ -6,7 +6,7 @@ import { Breadcrumbs } from "../common/Breadcrumbs/Breadcrumbs"
 import { InteractionBlock } from "../InteractionBlock/InteractionBlock"
 import { UserActionsLog } from "../UserActionsLog/UserActionsLog"
 import { PictureVoting } from "./PictureVoting/PictureVoting"
-
+import styles from './Voting.module.scss'
 
 export const Voting = () => {
 
@@ -20,7 +20,7 @@ export const Voting = () => {
     }, [])
 
     return (
-        <div>
+        <div className={styles.voting}>
             <Breadcrumbs />
             <PictureVoting />
             <UserActionsLog />

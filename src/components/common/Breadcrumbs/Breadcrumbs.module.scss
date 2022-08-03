@@ -1,9 +1,6 @@
 .body {
     display: flex;
 
-    &:not(:last-child) {
-        margin-bottom: 20px;
-    }
 
     >* {
         &:not(:last-child) {

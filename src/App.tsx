@@ -14,9 +14,9 @@ import { Home } from './components/Home/Home';
 import { InteractionBlock } from './components/InteractionBlock/InteractionBlock';
 import { Likes } from './components/Likes/Likes';
 import { MainBlock } from './components/MainBlock/MainBlock';
-import { SearchContainer } from './components/SearchPage/SearchContainer';
-import { SearchItem } from './components/SearchPage/SearchItem';
 import { SearchPage } from './components/SearchPage/SearchPage';
+import { SearchItem } from './components/SearchPage/SearchItem';
+import { SearchContainer } from './components/SearchPage/SearchContainer';
 import { Voting } from './components/Voting/Voting';
 import { useTypedSelector } from './hooks/redux';
 
@@ -51,8 +51,8 @@ function App() {
                 <Route path=':breedId' element={<SelectedBreed />} />
               </Route>
               <Route path='/gallery' element={<Gallery />} />
-              <Route path='/search' element={<SearchContainer />} >
-                <Route path='' element={<SearchPage />} />
+              <Route path='/search' element={<SearchPage />} >
+                <Route path='' element={<SearchContainer />} />
                 <Route path=':searchId' element={<SearchItem />} />
               </Route>
               <Route path='/favourites' element={<Favourites />} />

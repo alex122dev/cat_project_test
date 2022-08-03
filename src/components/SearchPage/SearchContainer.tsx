@@ -1,27 +1,24 @@
-import { useEffect } from "react"
-import { Outlet } from "react-router-dom"
-import { useTypedDispatch } from "../../hooks/redux"
-import { actions, getAllBreeds } from "../../redux/reducers/breeds-reducer"
-import { Breadcrumbs } from "../common/Breadcrumbs/Breadcrumbs"
-
-
+import { useTypedSelector } from '../../hooks/redux'
+import { Breeds } from '../Breeds/Breeds'
+import { NoItemFound } from '../common/NoItemFound/NoItemFound'
+import styles from './SearchPage.module.scss'
 
 export const SearchContainer = () => {
+    const breeds = useTypedSelector(state => state.breedsRD.breeds)
+    const searchBreedText = useTypedSelector(state => state.breedsRD.searchBreedText)
 
-    const dispatch = useTypedDispatch()
+    const regexp = new RegExp(searchBreedText, 'i')
+    const findBreeds = breeds.filter(breed => regexp.test(breed.name))
 
-    useEffect(() => {
-        dispatch(getAllBreeds())
 
-        return () => {
-            dispatch(actions.setSearchBreedText(''))
-        }
-    }, [])
+    console.log('findBreeds', findBreeds);
 
     return (
-        <div>
-            <Breadcrumbs />
-            <Outlet />
+        <div className={styles.container}>
+            <p className={styles.text}>Search results for: <span>{searchBreedText}</span></p>
+            {findBreeds.length === 0
+                ? <NoItemFound />
+                : <Breeds breeds={findBreeds} />}
         </div>
     )
 }
