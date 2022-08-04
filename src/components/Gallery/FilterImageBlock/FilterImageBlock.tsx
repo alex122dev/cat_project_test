@@ -2,14 +2,18 @@ import { Field, Form, Formik } from 'formik'
 import { useEffect } from 'react';
 import { useTypedDispatch, useTypedSelector } from '../../../hooks/redux';
 import { getAllBreeds } from '../../../redux/reducers/breeds-reducer';
+import { FilterType, getImagesForGallery } from '../../../redux/reducers/gallery-reducer';
 import { CustomSelect, OptionType } from '../../common/CustomSelect/CustomSelect';
 import { MyButton } from '../../common/MyButton/MyButton';
 import styles from './FilterImageBlock.module.scss'
 
-
+type PropsType = {
+    submitHandle: (values: FilterType) => void
+}
 
 export const FilterImageBlock = () => {
     const dispatch = useTypedDispatch()
+    const filter = useTypedSelector(state => state.galleryRD.filter)
     useEffect(() => {
         dispatch(getAllBreeds())
     }, [])
@@ -38,11 +42,15 @@ export const FilterImageBlock = () => {
         { value: 20, label: '20 items per page' },
     ]
 
+    //initialValues={{ order: 'RANDOM', type: 'gif,jpg,png', breed: '', limit: 5 }}
+
     return (
         <Formik
-            initialValues={{ order: 'RANDOM', type: 'gif,jpg,png', breed: '', limit: 5 }}
+            enableReinitialize={true}
+            initialValues={filter}
             onSubmit={(values) => {
                 console.log('values from form', values);
+                dispatch(getImagesForGallery(1, values))
             }}
         >
             {({ values, setFieldValue }) => (

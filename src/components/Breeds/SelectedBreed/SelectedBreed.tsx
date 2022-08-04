@@ -5,7 +5,7 @@ import { getAllBreeds } from "../../../redux/reducers/breeds-reducer"
 import { Breadcrumbs } from "../../common/Breadcrumbs/Breadcrumbs"
 import { NoItemFound } from "../../common/NoItemFound/NoItemFound"
 import { BreedItem } from "./BreedItem"
-
+import styles from './SelectedBreed.module.scss'
 
 export const SelectedBreed = () => {
     //const dispatch = useTypedDispatch()
@@ -21,7 +21,7 @@ export const SelectedBreed = () => {
     }
 
     return (
-        <div>
+        <div className={styles.selectedBreed}>
             <Breadcrumbs />
             <BreedItem selectedBreed={selectedBreed} />
         </div>

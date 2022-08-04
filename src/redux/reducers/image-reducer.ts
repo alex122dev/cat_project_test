@@ -1,14 +1,8 @@
-import { imagesAPI } from "../../api/imagesAPI"
+import { imagesAPI, ImageType } from "../../api/imagesAPI"
 import { BaseThunkType, DispatchThunkType, InferActionsTypes } from "../store"
 import { getAllVotes } from './voting-reducer'
 
-export type ImageType = {
-    breeds: any[]
-    height: number
-    width: number
-    id: string
-    url: string
-}
+
 
 const initialState = {
     image: null as null | ImageType,

@@ -196,6 +196,6 @@ export const FavouriteImage: React.FC<PropsType> = ({ item }) => {
             size="small"
             icon="_icon-favourite-color-all"
             startColor="white"
-            disabled={inToFromFavouritesProccess.some(id => id === item.id)} />
+            disabled={inToFromFavouritesProccess.some(id => id === item.image_id)} />
     </div>
 }

@@ -1,7 +1,6 @@
 import { breedsAPI, BreedType, SearchNameBreedType } from "../../api/breedsAPI"
-import { imagesAPI } from "../../api/imagesAPI"
+import { imagesAPI, ImageType } from "../../api/imagesAPI"
 import { BaseThunkType, InferActionsTypes } from "../store"
-import { ImageType } from "./image-reducer"
 
 
 const initialState = {

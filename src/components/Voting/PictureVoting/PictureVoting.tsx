@@ -50,8 +50,8 @@ export const PictureVoting: React.FC<PropsType> = () => {
     }
 
     const removeFromFavourites = () => {
-        if (favItem) {
-            dispatch(deleteFromFavourites(favItem.id, favItem.image_id, favItem.image.url))
+        if (favItem && image) {
+            dispatch(deleteFromFavourites(favItem.id, image.id, image.url))
         }
     }
 

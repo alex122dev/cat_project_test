@@ -1,3 +1,13 @@
+.container {
+    height: 100%;
+
+    &>* {
+        &:not(:last-child) {
+            margin-bottom: 20px;
+        }
+    }
+}
+
 .topBlock {
     display: flex;
     align-items: center;

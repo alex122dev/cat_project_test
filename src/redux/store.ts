@@ -2,6 +2,7 @@ import { Action, applyMiddleware, combineReducers, compose, createStore, Store }
 import thunk, { ThunkAction, ThunkDispatch } from "redux-thunk"
 import { breedsReducer } from "./reducers/breeds-reducer";
 import { favouritesReducer } from "./reducers/favourites-reducer";
+import { galleryReducer } from "./reducers/gallery-reducer";
 import { imageReducer } from "./reducers/image-reducer";
 import { userActionsLogReducer } from "./reducers/userActionsLog-reducer";
 import { votingReducer } from "./reducers/voting-reducer";
@@ -11,7 +12,8 @@ const rootReducer = combineReducers({
     favouritesRD: favouritesReducer,
     userActionsRD: userActionsLogReducer,
     imageRD: imageReducer,
-    breedsRD: breedsReducer
+    breedsRD: breedsReducer,
+    galleryRD: galleryReducer
 })
 
 declare global {

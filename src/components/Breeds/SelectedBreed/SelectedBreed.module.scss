@@ -1,3 +1,11 @@
+.selectedBreed {
+    >* {
+        &:first-child {
+            margin-bottom: 20px;
+        }
+    }
+}
+
 .container {
     min-width: 0;
 }
