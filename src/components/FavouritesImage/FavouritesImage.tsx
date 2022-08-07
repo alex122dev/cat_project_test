@@ -1,13 +1,15 @@
 import cn from 'classnames'
 import { useState } from 'react'
-import { ImageType } from '../../api/imagesAPI'
 import { useTypedDispatch, useTypedSelector } from '../../hooks/redux'
 import { deleteFromFavourites, saveToFavourites } from '../../redux/reducers/favourites-reducer'
 import { MyButton } from '../common/MyButton/MyButton'
 import styles from './FavouritesImage.module.scss'
 
 type PropsType = {
-    item: ImageType
+    item: {
+        id: string
+        url: string
+    }
 }
 
 export const FavouriteImage: React.FC<PropsType> = ({ item }) => {
@@ -20,12 +22,10 @@ export const FavouriteImage: React.FC<PropsType> = ({ item }) => {
     const favItem = favourites.find(el => el.image_id === item.id)
 
     const addToFavourite = () => {
-        console.log('add');
         dispatch(saveToFavourites({ image_id: item.id }, item.url))
     }
 
     const removeFromFavourites = () => {
-        console.log('delete');
         if (favItem) {
             dispatch(deleteFromFavourites(favItem.id, item.id, item.url))
         }

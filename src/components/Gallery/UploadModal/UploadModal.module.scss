@@ -1,0 +1,149 @@
+.container {
+    position: relative;
+
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+
+    font-size: 20px;
+    line-height: 30px;
+    color: #8C8C8C;
+    text-align: center;
+}
+
+.closeBtn {
+    align-self: flex-end;
+
+    &:not(:last-child) {
+        margin-bottom: 40px;
+    }
+}
+
+.title {
+    text-align: center;
+
+    color: #1D1D1D;
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 52px;
+
+    &:not(:last-child) {
+        margin-bottom: 10px;
+    }
+}
+
+.text {
+    text-align: center;
+
+    &:not(:last-child) {
+        margin-bottom: 40px;
+    }
+
+    a {
+        color: #FF868E;
+    }
+}
+
+.previewBlock {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+
+    background-color: #fff;
+    border: 2px dashed #FBE0DC;
+    border-radius: 20px;
+
+    padding: 20px;
+    min-height: 320px;
+
+    .previewImage {
+
+        img {
+            display: block;
+            max-width: 100%;
+            border-radius: 10px;
+        }
+    }
+
+    .tipText {
+        position: relative;
+        z-index: 2;
+
+        span {
+            color: #1D1D1D;
+            font-weight: 500;
+        }
+    }
+
+    .placeholderImg {
+        //background-color: #fff;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        width: 200px;
+        height: 200px;
+    }
+
+    &:not(:last-child) {
+        margin-bottom: 20px;
+    }
+
+    .uploadInpRef {
+        display: none;
+    }
+}
+
+.name {
+    &:not(:last-child) {
+        margin-bottom: 20px;
+    }
+}
+
+.uploadBtn {
+    align-self: center;
+
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+
+    &:not(:last-child) {
+        margin-bottom: 20px;
+    }
+}
+
+.uploadingPreloader {
+    margin-right: 10px;
+}
+
+.message {
+    text-align: left;
+    color: #8C8C8C;
+    background-color: #fff;
+    padding: 18px 20px;
+    min-height: 60px;
+    font-size: 16px;
+    line-height: 150%;
+    border-radius: 10px;
+
+    display: flex;
+    align-items: center;
+
+    span {
+        font-size: 20px;
+        margin-right: 10px;
+
+        &.success {
+            color: #97EAB9;
+        }
+
+        &.error {
+            color: #FF868E;
+        }
+    }
+}

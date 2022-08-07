@@ -30,6 +30,16 @@ export const imagesAPI = {
     },
     getImage(image_id: string) {
         return instance.get(`images/${image_id}`).then(res => res.data)
+    },
+    uploadImage(file: File, subId = '') {
+        const formData = new FormData()
+        formData.append('file', file)
+        formData.append('sub_id', subId)
+        return instance.post('/images/upload', formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        }).then(res => res.data)
     }
 }
 
@@ -46,6 +56,3 @@ export type ImageRequestType = {
     page?: number
     breed_id?: string
 }
-
-//imagesAPI.getImages({ breed_id: 'abys', limit: 7, page: 2 })
-//imagesAPI.getImages({})

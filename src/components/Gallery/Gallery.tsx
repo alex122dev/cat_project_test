@@ -1,21 +1,26 @@
-import { useEffect } from "react"
-import { createSearchParams, useSearchParams } from "react-router-dom"
-import { OrderType } from "../../api/imagesAPI"
+import { useEffect, useState } from "react"
+import { useSearchParams } from "react-router-dom"
 import { useTypedDispatch, useTypedSelector } from "../../hooks/redux"
-import { FilterType, getImagesForGallery } from "../../redux/reducers/gallery-reducer"
+import { FilterType, getImagesForGallery, getMoreImages } from "../../redux/reducers/gallery-reducer"
 import { Breadcrumbs } from "../common/Breadcrumbs/Breadcrumbs"
+import { DefaultButton } from "../common/DefaultButton/DefaultButton"
+import { Modal } from "../common/Modal/Modal"
 import { MyButton } from "../common/MyButton/MyButton"
-import { InteractionBlock } from "../InteractionBlock/InteractionBlock"
 import { FilterImageBlock } from "./FilterImageBlock/FilterImageBlock"
 import styles from './Gallery.module.scss'
 import { GalleryGrid } from "./GalleryGrid/GalleryGrid"
+import { UploadModal } from "./UploadModal/UploadModal"
 
 export const Gallery = () => {
 
     const dispatch = useTypedDispatch()
+    const isFetching = useTypedSelector(state => state.galleryRD.isFetching)
+    const images = useTypedSelector(state => state.galleryRD.images)
     const filter = useTypedSelector(state => state.galleryRD.filter)
     const currentPage = useTypedSelector(state => state.galleryRD.currentPage)
 
+
+    const [isActiveModal, setActiveModal] = useState(false)
     const [searchParams, setSearchParams] = useSearchParams()
 
     useEffect(() => {
@@ -34,8 +39,8 @@ export const Gallery = () => {
             paramsFromUrlString.type === 'jpg,png' ||
             paramsFromUrlString.type === 'gif') actualFilter = { ...actualFilter, type: paramsFromUrlString.type }
 
-        console.log('actualFilter: ', actualFilter);
-        console.log('actualCurrentPage: ', actualCurrentPage);
+        //console.log('actualFilter: ', actualFilter);
+        //console.log('actualCurrentPage: ', actualCurrentPage);
 
         dispatch(getImagesForGallery(actualCurrentPage, actualFilter))
 
@@ -53,19 +58,33 @@ export const Gallery = () => {
 
         if (currentPage !== 1) params.page = currentPage.toString()
 
-        console.log('params: ', params);
-
+        // console.log('params: ', params);
         setSearchParams(params)
     }, [filter, currentPage])
 
+
+    const getMoreImagesHandler = () => {
+        dispatch(getMoreImages(currentPage + 1, filter))
+    }
+
     return (
-        <div className={styles.container}>
-            <div className={styles.topBlock}>
-                <Breadcrumbs />
-                <button className={[styles.uploadBtn, '_icon-upload'].join(' ')}><span>Upload</span></button>
+        <>
+            <div className={styles.container}>
+                <div className={styles.topBlock}>
+                    <Breadcrumbs />
+                    <DefaultButton className={styles.uploadBtn}
+                        onClick={() => setActiveModal(true)}
+                        startColor="lightpink"><span className="_icon-upload" /> Upload</DefaultButton>
+                </div>
+                <FilterImageBlock />
+                <GalleryGrid />
+                {images.length > 0 && <DefaultButton startColor='pink'
+                    onClick={getMoreImagesHandler}
+                    className={styles.showmoreBtn}
+                    disabled={isFetching}
+                >Show More</DefaultButton>}
             </div>
-            <FilterImageBlock />
-            <GalleryGrid />
-        </div>
+            <UploadModal IsActiveModal={isActiveModal} setActiveModal={setActiveModal} />
+        </>
     )
 }

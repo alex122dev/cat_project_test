@@ -1,0 +1,101 @@
+.btn {
+    border-radius: 10px;
+    //background-color: #FBE0DC;
+    //color: #FF868E;
+
+    //font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 500;
+
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 30px;
+
+    transition: all 0.3s ease 0s;
+
+    &::before {
+        transition: all 0.3s ease 0s;
+    }
+
+
+    &.pink {
+        background-color: #FF868E;
+        color: #fff;
+
+        @media (any-hover: hover) {
+            &:hover {
+                background-color: #FBE0DC;
+                color: #FF868E;
+            }
+        }
+    }
+
+    &.lightpink {
+        background-color: #FBE0DC;
+        color: #FF868E;
+
+        @media (any-hover: hover) {
+            &:hover {
+                background-color: #FF868E;
+                color: #fff;
+            }
+        }
+    }
+
+    &:disabled {
+        color: #8C8C8C;
+        background-color: #F8F8F7;
+
+        @media (any-hover: hover) {
+            &:hover {
+                color: #8C8C8C;
+                background-color: #F8F8F7;
+            }
+        }
+    }
+}
+
+.uploadBtn {
+    border-radius: 10px;
+    background-color: #FBE0DC;
+    color: #FF868E;
+
+    span {
+        font-family: 'Jost';
+        text-transform: uppercase;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+    }
+
+
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 30px;
+
+    transition: all 0.3s ease 0s;
+
+    &::before {
+        color: #FF868E;
+        font-size: 16px;
+        transition: all 0.3s ease 0s;
+        font-weight: 600;
+        margin-right: 10px;
+    }
+
+    @media (any-hover: hover) {
+        &:hover {
+            background-color: #FF868E;
+            color: #fff;
+
+            &::before {
+                color: #fff;
+            }
+        }
+    }
+}

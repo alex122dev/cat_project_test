@@ -19,45 +19,21 @@
     }
 }
 
+
 .uploadBtn {
-    border-radius: 10px;
-    background-color: #FBE0DC;
-    color: #FF868E;
+    font-size: 12px;
+    letter-spacing: 2px;
 
     span {
-        font-family: 'Jost';
-        text-transform: uppercase;
-        font-weight: 500;
-        font-size: 12px;
-        line-height: 16px;
-        letter-spacing: 2px;
-    }
-
-
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 30px;
-
-    transition: all 0.3s ease 0s;
-
-    &::before {
-        color: #FF868E;
         font-size: 16px;
-        transition: all 0.3s ease 0s;
         font-weight: 600;
         margin-right: 10px;
+        letter-spacing: 0;
     }
+}
 
-    @media (any-hover: hover) {
-        &:hover {
-            background-color: #FF868E;
-            color: #fff;
 
-            &::before {
-                color: #fff;
-            }
-        }
-    }
+.showmoreBtn {
+    display: block;
+    margin: 0 auto;
 }

@@ -1,6 +1,8 @@
 import { useEffect } from 'react'
 import { useTypedDispatch, useTypedSelector } from '../../../hooks/redux'
 import { getFavourites } from '../../../redux/reducers/favourites-reducer'
+import { getMoreImages } from '../../../redux/reducers/gallery-reducer'
+import { DefaultButton } from '../../common/DefaultButton/DefaultButton'
 import { NoItemFound } from '../../common/NoItemFound/NoItemFound'
 import { Preloader } from '../../common/Preloader/Preloader'
 import { FavouriteImage } from '../../FavouritesImage/FavouritesImage'
@@ -26,9 +28,9 @@ export const GalleryGrid = () => {
 
     return (
         <div className={styles.galleryGrid}>
-            {isFetching && <Preloader className={styles.preloader} />}
             {!isFetching && images.length === 0 && <NoItemFound />}
             {gridBlocks.map((block, i) => <GridPattern key={i} elements={block} />)}
+            {isFetching && <Preloader className={styles.preloader} />}
         </div>
     )
 }

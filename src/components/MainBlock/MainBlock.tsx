@@ -19,7 +19,7 @@ export const MainBlock = () => {
                 <p className={styles.text}>Welcome to MI 2022 Front-end test</p>
                 <p className={styles.boldText}>Lets start using The Cat API</p>
 
-                <Navbar minMenu={isMobile} />
+                <Navbar className={styles.navbar} minMenu={isMobile} />
             </div>
         </div>
     )

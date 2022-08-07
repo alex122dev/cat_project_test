@@ -7,6 +7,10 @@
     row-gap: 20px;
     column-gap: 20px;
 
+    &:not(:last-child) {
+        margin-bottom: 20px;
+    }
+
     >* {
         //background-color: green;
     }
