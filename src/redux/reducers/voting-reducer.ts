@@ -1,31 +1,41 @@
-import { CreateContextOptions } from "vm"
-import { favouritesAPI, SaveFavouritesType } from "../../api/favouritesAPI"
-import { imagesAPI } from "../../api/imagesAPI"
+import { imagesAPI, ImageType } from "../../api/imagesAPI"
 import { CreateVoteType, votesAPI, VoteType } from "../../api/votesAPI"
 import { BaseThunkType, DispatchThunkType, InferActionsTypes } from "../store"
-import { getRandomImage } from "./image-reducer"
+//import { getRandomImage } from "./image-reducer"
 import { actions as logActions, UserActionsType } from './userActionsLog-reducer'
 
 
 
 const initialState = {
+    isFetchingImage: false,
+    image: null as null | ImageType,
+    isFetchingVotes: false,
     votes: [] as VoteType[],
-    isFetching: false
 }
 
 type InitialStateType = typeof initialState
 
 export const votingReducer = (state = initialState, action: ActionsType): InitialStateType => {
     switch (action.type) {
+        case "VOTING-RD/SET-IS-FETCHING-IMAGE":
+            return {
+                ...state,
+                isFetchingImage: action.value
+            }
+        case 'VOTING-RD/SET-IMAGE':
+            return {
+                ...state,
+                image: action.image
+            }
+        case 'VOTING-RD/SET-IS-FETCHING-VOTES':
+            return {
+                ...state,
+                isFetchingVotes: action.value
+            }
         case 'VOTING-RD/SET-VOTES':
             return {
                 ...state,
                 votes: action.votes.sort((a, b) => +new Date(b.created_at) - +new Date(a.created_at))
-            }
-        case "VOTING-RD/SET-IS-FETCHING":
-            return {
-                ...state,
-                isFetching: action.value
             }
         default:
             return state
@@ -33,29 +43,23 @@ export const votingReducer = (state = initialState, action: ActionsType): Initia
 }
 
 export const actions = {
+    setIsFetchingImage: (value: boolean) => ({ type: 'VOTING-RD/SET-IS-FETCHING-IMAGE', value } as const),
+    setImage: (image: ImageType | null) => ({ type: 'VOTING-RD/SET-IMAGE', image } as const),
+    setIsFetchingVotes: (value: boolean) => ({ type: 'VOTING-RD/SET-IS-FETCHING-VOTES', value } as const),
     setVotes: (votes: VoteType[]) => ({ type: 'VOTING-RD/SET-VOTES', votes } as const),
-    setIsFetching: (value: boolean) => ({ type: 'VOTING-RD/SET-IS-FETCHING', value } as const),
 }
 
 type ActionsType = InferActionsTypes<typeof actions>
 
 
-export const getAllVotes = (): ThunkType => async (dispatch) => {
+export const getRandomImage = (): ThunkType => async (dispatch) => {
     try {
-        dispatch(actions.setIsFetching(true))
-        const data = await votesAPI.getAllVotes()
-        console.log('get all votes', data);
-        dispatch(actions.setIsFetching(false))
-        dispatch(actions.setVotes(data))
-    } catch (error) {
-
-    }
-}
-
-export const getSpecificVote = (id: number): ThunkType => async (dispatch) => {
-    try {
-        const data = await votesAPI.getSpecificVote(id)
-        console.log('get specific vote', data);
+        dispatch(actions.setImage(null))
+        dispatch(actions.setIsFetchingImage(true))
+        const image = await imagesAPI.getImages({})
+        console.log('getRandomImage: ', image);
+        dispatch(actions.setImage(image[0]))
+        dispatch(actions.setIsFetchingImage(false))
     } catch (error) {
 
     }
@@ -63,7 +67,7 @@ export const getSpecificVote = (id: number): ThunkType => async (dispatch) => {
 
 export const createVote = (payload: CreateVoteType, url: string) => async (dispatch: DispatchThunkType) => {
     try {
-        dispatch(actions.setIsFetching(true))
+        dispatch(actions.setIsFetchingImage(true))
         const data = await votesAPI.createVote(payload)
         console.log('create new vote', data);
 
@@ -78,23 +82,24 @@ export const createVote = (payload: CreateVoteType, url: string) => async (dispa
 
         dispatch(logActions.setAction(act))
 
-        dispatch(actions.setIsFetching(false))
+        dispatch(actions.setIsFetchingImage(false))
         dispatch(getRandomImage())
     } catch (error) {
 
     }
 }
 
-export const deleteVote = (voteId: number): ThunkType => async (dispatch) => {
+export const getAllVotes = (): ThunkType => async (dispatch) => {
     try {
-        const data = await votesAPI.deleteVote(voteId)
-        console.log(data);
-
+        dispatch(actions.setIsFetchingVotes(true))
+        const votes = await votesAPI.getAllVotes()
+        console.log('getAllVotes: ', votes);
+        dispatch(actions.setVotes(votes))
+        dispatch(actions.setIsFetchingVotes(false))
     } catch (error) {
-
+        dispatch(actions.setIsFetchingVotes(false))
     }
 }
-
 
 
 type ThunkType = BaseThunkType<ActionsType>

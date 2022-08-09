@@ -1,6 +1,6 @@
 import { useEffect } from "react"
+import { VoteType } from "../../api/votesAPI"
 import { useTypedDispatch, useTypedSelector } from "../../hooks/redux"
-import { UserActionsType } from "../../redux/reducers/userActionsLog-reducer"
 import { getAllVotes } from "../../redux/reducers/voting-reducer"
 import { Breadcrumbs } from "../common/Breadcrumbs/Breadcrumbs"
 import { NoItemFound } from "../common/NoItemFound/NoItemFound"
@@ -9,8 +9,14 @@ import { GridPattern } from "../GridPattern/GridPattern"
 import styles from './Likes.module.scss'
 
 export const Likes = () => {
-    const userActions = useTypedSelector(state => state.userActionsRD.userActions)
-    const likes = userActions.filter(item => item.type === 'Likes')
+    const dispatch = useTypedDispatch()
+    const likes = useTypedSelector(state => state.voting.votes).filter(vote => vote.value === 1)
+    const isFetchingVotes = useTypedSelector(state => state.voting.isFetchingVotes)
+
+    useEffect(() => {
+        dispatch(getAllVotes())
+    }, [])
+
 
     const gridItems = likes.map(like => <LikeImage item={like} />)
 
@@ -23,20 +29,21 @@ export const Likes = () => {
     return (
         <div className={styles.container}>
             <Breadcrumbs />
-            {likes.length === 0 && <NoItemFound />}
+            {isFetchingVotes && <Preloader className={styles.preloader} />}
+            {!isFetchingVotes && likes.length === 0 && <NoItemFound />}
             {gridBlocks.map((block, i) => <GridPattern key={i} elements={block} />)}
         </div>
     )
 }
 
 type PropsType = {
-    item: UserActionsType
+    item: VoteType
 }
 
 export const LikeImage: React.FC<PropsType> = ({ item }) => {
     return (
         <div className={styles.image}>
-            <img src={item.url} alt="cat" />
+            <img src={item.image.url} alt="cat" />
         </div>
     )
 }

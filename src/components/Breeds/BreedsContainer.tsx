@@ -83,8 +83,10 @@ export const BreedsContainer = () => {
                     setSelected={setSelected}
                     options={options}
                     startPlaceholder={'All breeds'} />
-                <MyButton onClick={sortHandlerAB} className={styles.sortBtn} size="small" icon="_icon-sort-AB" />
-                <MyButton onClick={sortHandlerBA} className={styles.sortBtn} size="small" icon="_icon-sort-BA" />
+                <div className={styles.sortBlock}>
+                    <MyButton onClick={sortHandlerAB} className={styles.sortBtn} size="small" icon="_icon-sort-AB" />
+                    <MyButton onClick={sortHandlerBA} className={styles.sortBtn} size="small" icon="_icon-sort-BA" />
+                </div>
             </div>
             <Breeds breeds={customBreeds} />
         </div>

@@ -1,6 +1,6 @@
 
 import cn from 'classnames';
-import { useMediaQuery } from 'react-responsive';
+//import { useMediaQuery } from 'react-responsive';
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import './App.scss';
 import { Breeds } from './components/Breeds/Breeds';
@@ -19,20 +19,15 @@ import { SearchItem } from './components/SearchPage/SearchItem';
 import { SearchContainer } from './components/SearchPage/SearchContainer';
 import { Voting } from './components/Voting/Voting';
 import { useTypedSelector } from './hooks/redux';
+import { useMatchMedia } from './hooks/useMatchMedia';
 
 
 function App() {
 
-  const breeds = useTypedSelector(state => state.breedsRD.breeds)
-
   const location = useLocation()
   //console.log(location.pathname);
 
-
-  const isDesktop = useMediaQuery({ query: '(min-width: 1024px)' })
-  const isMobile = useMediaQuery({ query: '(max-width: 499.98px)' })
-  //console.log(isDesktop);
-
+  const { isDesktop } = useMatchMedia()
 
   return (
     <div className="appWrapper">
@@ -40,7 +35,7 @@ function App() {
         {isDesktop && <MainBlock />}
         {!isDesktop && location.pathname === '/home' && <MainBlock />}
 
-        <div className={'content'}>
+        <div className={cn('content', { 'hidden': location.pathname === '/home' && !isDesktop })} >
           {location.pathname !== '/home' && <InteractionBlock />}
           <div className='body'>
             <Routes>

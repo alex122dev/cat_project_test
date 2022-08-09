@@ -20,7 +20,7 @@ export const userActionsLogReducer = (state = initialState, action: ActionsType)
         case 'USER-ACTIONS-LOG-RD/SET-ACTION':
             return {
                 ...state,
-                userActions: [...state.userActions, action.act].sort((a, b) => +new Date(b.date) - +new Date(a.date))
+                userActions: [action.act, ...state.userActions] //.sort((a, b) => +new Date(b.date) - +new Date(a.date))
             }
         default:
             return state

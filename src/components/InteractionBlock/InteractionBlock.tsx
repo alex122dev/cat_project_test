@@ -1,9 +1,9 @@
 import cn from 'classnames'
 import { useEffect, useState } from 'react'
 import { useMediaQuery } from 'react-responsive'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { useTypedDispatch, useTypedSelector } from '../../hooks/redux'
-import { actions, getBreedsByName } from '../../redux/reducers/breeds-reducer'
+import { actions } from '../../redux/reducers/breeds-reducer'
 import { Burger } from '../common/Burger/Burger'
 import { MyButton } from '../common/MyButton/MyButton'
 import { Navbar } from '../Navbar/Navbar'
@@ -17,6 +17,15 @@ export const InteractionBlock = () => {
     const [activeMenu, setActiveMenu] = useState(false)
 
     const location = useLocation()
+
+    useEffect(() => {
+        if (!activeMenu) return
+        document.body.style.overflow = 'hidden'
+
+        return () => {
+            document.body.style.overflow = 'auto'
+        }
+    }, [activeMenu])
 
 
     const navigate = useNavigate()

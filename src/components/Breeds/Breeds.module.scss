@@ -17,14 +17,28 @@
     display: flex;
     column-gap: 10px;
 
-    >* {
-        &:not(:last-child) {
-            margin-bottom: 0;
-        }
-    }
-
     &:not(:last-child) {
         margin-bottom: 20px;
+    }
+
+    @media (max-width: 480px) {
+        flex-direction: column;
+
+        &:not(:last-child) {
+            margin-bottom: 10px;
+        }
+
+        &>*:not(:last-child) {
+            margin-bottom: 10px;
+        }
+    }
+}
+
+.sortBlock {
+    display: flex;
+
+    @media (max-width: 480px) {
+        align-self: flex-end;
     }
 }
 
@@ -45,6 +59,12 @@
             &::before {
                 color: #FF868E;
             }
+        }
+    }
+
+    @media (max-width: 480px) {
+        &:not(:last-child) {
+            margin-right: 10px;
         }
     }
 }
@@ -69,6 +89,9 @@
         top: 0;
         left: 0;
         border-radius: 20px;
+
+        object-position: top;
+        object-fit: cover;
     }
 
     .btn {

@@ -2,28 +2,40 @@ import cn from "classnames"
 import { useEffect, useState } from "react"
 import { CreateVoteType } from "../../../api/votesAPI"
 import { useTypedDispatch, useTypedSelector } from "../../../hooks/redux"
-import { deleteFromFavourites, saveToFavourites } from "../../../redux/reducers/favourites-reducer"
-import { getRandomImage } from "../../../redux/reducers/image-reducer"
-import { createVote } from "../../../redux/reducers/voting-reducer"
+import { deleteFromFavourites, getFavourites, saveToFavourites } from "../../../redux/reducers/favourites-reducer"
+import { createVote, getRandomImage } from "../../../redux/reducers/voting-reducer"
 import { Preloader } from "../../common/Preloader/Preloader"
 import styles from './PictureVoting.module.scss'
 
 
 
-type PropsType = {
-    //image: ImageType | null
-}
+export const PictureVoting: React.FC = () => {
 
-export const PictureVoting: React.FC<PropsType> = () => {
-    //console.log('dsfsdfsdfs : ', image);
-    const image = useTypedSelector(state => state.imageRD.image)
+    const image = useTypedSelector(state => state.voting.image)
 
     const dispatch = useTypedDispatch()
     const favourites = useTypedSelector(state => state.favouritesRD.favourites)
-    const isFetching = useTypedSelector(state => state.voting.isFetching)
-    const isFetchingImage = useTypedSelector(state => state.imageRD.isFetching)
+    const isFetchingImage = useTypedSelector(state => state.voting.isFetchingImage)
     const inToFromFavouritesProccess = useTypedSelector(state => state.favouritesRD.inToFromFavouritesProccess)
 
+    const [isReadyImg, setIsReadyImg] = useState(false)
+
+    //console.log('isReadyImg: ', isReadyImg);
+
+
+    if (image) {
+        const img = new Image()
+        img.src = image.url
+        img.onload = () => {
+            setIsReadyImg(true)
+        }
+    }
+
+    useEffect(() => {
+        if (!image) {
+            setIsReadyImg(false)
+        }
+    }, [image])
 
     const favItem = favourites.find(item => image?.id === item.image_id)
     //console.log(favItem);
@@ -31,6 +43,7 @@ export const PictureVoting: React.FC<PropsType> = () => {
 
     useEffect(() => {
         dispatch(getRandomImage())
+        dispatch(getFavourites())
     }, [])
 
     const likeCallback = (ind: boolean) => {
@@ -58,17 +71,17 @@ export const PictureVoting: React.FC<PropsType> = () => {
     return (
         <div className={styles.body}>
             <div className={styles.image}>
-                {image
+                {(image && isReadyImg)
                     ? <img src={image.url} alt="cat" />
                     : <Preloader className={styles.preloader} />}
             </div>
             <div className={styles.votingBox}>
                 <button
-                    disabled={isFetching || isFetchingImage}
+                    disabled={isFetchingImage}
                     className={cn(styles.votingBtn, { "_icon-like": true, [styles.likeBtn]: true })}
                     onClick={() => likeCallback(true)} />
                 <button
-                    disabled={inToFromFavouritesProccess.some(id => id === image?.id || id === favItem?.id) || isFetching || isFetchingImage}
+                    disabled={inToFromFavouritesProccess.some(id => id === image?.id || id === favItem?.id) || isFetchingImage}
                     className={cn(styles.votingBtn, {
                         "_icon-favourite": !favItem,
                         "_icon-favourite-color-all": favItem,
@@ -78,7 +91,7 @@ export const PictureVoting: React.FC<PropsType> = () => {
                         favItem ? removeFromFavourites() : addToFavourite()
                     }} />
                 <button
-                    disabled={isFetching || isFetchingImage}
+                    disabled={isFetchingImage}
                     className={cn(styles.votingBtn, { "_icon-dislike": true, [styles.dislikeBtn]: true })}
                     onClick={() => likeCallback(false)} />
             </div>

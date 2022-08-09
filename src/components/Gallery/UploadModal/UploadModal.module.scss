@@ -18,6 +18,12 @@
     &:not(:last-child) {
         margin-bottom: 40px;
     }
+
+    @media (max-width: 480px) {
+        &:not(:last-child) {
+            margin-bottom: 20px;
+        }
+    }
 }
 
 .title {
@@ -31,6 +37,15 @@
     &:not(:last-child) {
         margin-bottom: 10px;
     }
+
+    @media (max-width: 480px) {
+        font-size: 20px;
+        line-height: 29px;
+
+        &:not(:last-child) {
+            margin-bottom: 20px;
+        }
+    }
 }
 
 .text {
@@ -42,6 +57,12 @@
 
     a {
         color: #FF868E;
+    }
+
+    @media (max-width: 480px) {
+        &:not(:last-child) {
+            margin-bottom: 20px;
+        }
     }
 }
 
@@ -59,6 +80,18 @@
 
     padding: 20px;
     min-height: 320px;
+
+    &:not(:last-child) {
+        margin-bottom: 20px;
+    }
+
+    @media (max-width: 480px) {
+        min-height: 168px;
+
+        &:not(:last-child) {
+            margin-bottom: 10px;
+        }
+    }
 
     .previewImage {
 
@@ -88,10 +121,19 @@
 
         width: 200px;
         height: 200px;
-    }
 
-    &:not(:last-child) {
-        margin-bottom: 20px;
+        img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        @media (max-width: 480px) {
+            width: 100px;
+            height: 100px;
+        }
     }
 
     .uploadInpRef {
@@ -114,6 +156,10 @@
 
     &:not(:last-child) {
         margin-bottom: 20px;
+    }
+
+    @media (max-width: 480px) {
+        align-self: stretch;
     }
 }
 

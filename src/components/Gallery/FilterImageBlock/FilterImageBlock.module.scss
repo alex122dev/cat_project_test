@@ -2,6 +2,10 @@
     background-color: #F8F8F7;
     padding: 10px 20px 20px 20px;
     border-radius: 20px;
+
+    @media (max-width: 480px) {
+        padding: 10px;
+    }
 }
 
 .row {
@@ -10,6 +14,10 @@
 
     &:not(:last-child) {
         margin-bottom: 10px;
+    }
+
+    @media (max-width: 600px) {
+        flex-direction: column;
     }
 }
 
@@ -21,6 +29,18 @@
         display: flex;
         align-items: flex-end;
         column-gap: 10px;
+
+        @media (max-width: 480px) {
+            flex-direction: column;
+            align-items: stretch;
+            row-gap: 10px;
+        }
+    }
+
+    @media (max-width: 600px) {
+        &:not(:last-child) {
+            margin-bottom: 10px;
+        }
     }
 }
 
@@ -33,4 +53,12 @@
     font-size: 10px;
     line-height: 18px;
     color: #8C8C8C;
+
+    padding-left: 10px;
+}
+
+.sendBtn {
+    @media (max-width: 480px) {
+        width: 100% !important;
+    }
 }

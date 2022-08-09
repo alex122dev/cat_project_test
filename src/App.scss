@@ -29,7 +29,7 @@
     //justify-content: flex-end;
     //flex-wrap: wrap;
 
-    @media (max-width: 499.98px) {
+    @media (max-width: 767.98px) {
         padding: 20px;
     }
 }
@@ -46,9 +46,9 @@
     flex-direction: column;
     row-gap: 10px;
 
-    /* &.tabletHome {
-        flex: 0 0 0px;
-    } */
+    &.hidden {
+        display: none;
+    }
 }
 
 .body {

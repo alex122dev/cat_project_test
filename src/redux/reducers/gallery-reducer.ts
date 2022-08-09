@@ -12,7 +12,7 @@ export type FilterType = {
 const initialState = {
     images: [] as ImageType[],
     isFetching: false,
-    currentPage: 1,
+    currentPage: 0,
     filter: {
         type: 'gif,jpg,png' as MimeType,
         order: 'RANDOM' as OrderType,

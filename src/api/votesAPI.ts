@@ -8,11 +8,15 @@ export type CreateVoteType = {
 
 export type VoteType = {
     id: number
-    value: number
     image_id: string
     sub_id: null | string
     created_at: Date
+    value: number
     country_code: string
+    image: {
+        id: string
+        url: string
+    }
 }
 
 export const votesAPI = {

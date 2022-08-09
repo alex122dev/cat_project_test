@@ -1,13 +1,7 @@
 import moment from 'moment'
 import { useTypedSelector } from '../../hooks/redux'
+import { isToday } from '../../utils/DateFunctions'
 import styles from './UserActionsLog.module.scss'
-
-const isToday = (someDate: Date) => {
-    const today = new Date()
-    return someDate.getDate() == today.getDate() &&
-        someDate.getMonth() == today.getMonth() &&
-        someDate.getFullYear() == today.getFullYear()
-}
 
 export const UserActionsLog: React.FC = () => {
     //const votes = useTypedSelector(state => state.voting.votes)

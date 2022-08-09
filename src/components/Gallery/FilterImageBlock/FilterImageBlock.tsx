@@ -50,7 +50,7 @@ export const FilterImageBlock = () => {
             initialValues={filter}
             onSubmit={(values) => {
                 console.log('values from form', values);
-                dispatch(getImagesForGallery(1, values))
+                dispatch(getImagesForGallery(0, values))
             }}
         >
             {({ values, setFieldValue }) => (
@@ -90,7 +90,7 @@ export const FilterImageBlock = () => {
                                     selected={values.limit} options={optionForLimit}
                                     setSelected={(v: string) => setFieldValue('limit', v)} />
                             </div>
-                            <MyButton type='submit' size='small' icon='_icon-update' />
+                            <MyButton className={styles.sendBtn} type='submit' size='small' icon='_icon-update' />
                         </div>
 
                     </div>

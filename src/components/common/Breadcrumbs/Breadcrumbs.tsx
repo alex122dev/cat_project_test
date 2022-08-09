@@ -18,9 +18,6 @@ export const Breadcrumbs: React.FC<PropsType> = ({ className }) => {
     const { pathname } = location;
     //console.log(pathname);
     const pathnames = pathname.split("/").filter((el) => el);
-    // arr.filter(el => el) removes anything undefined
-    // from an array (such as an empty string etc)
-    //console.log(pathnames);
 
     return (
         <div className={cn(styles.body, { [className as string]: className })}>
