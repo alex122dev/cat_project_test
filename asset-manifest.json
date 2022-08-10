@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/cat_project_test/static/css/main.1fcfb386.css",
+    "main.css": "/cat_project_test/static/css/main.cbd7154d.css",
     "main.js": "/cat_project_test/static/js/main.78a2c481.js",
     "static/media/girl-and-pet 1.png": "/cat_project_test/static/media/girl-and-pet 1.1927e13f60069098098c.png",
     "static/media/images-search.png": "/cat_project_test/static/media/images-search.8efc5d48c246a2e7ee34.png",
@@ -12,11 +12,11 @@
     "static/media/icons.ttf?34ck8f": "/cat_project_test/static/media/icons.4942989eb122056935a6.ttf",
     "static/media/upload-img.svg": "/cat_project_test/static/media/upload-img.e558d49591d8e9be9a27db5aa4034a09.svg",
     "index.html": "/cat_project_test/index.html",
-    "main.1fcfb386.css.map": "/cat_project_test/static/css/main.1fcfb386.css.map",
+    "main.cbd7154d.css.map": "/cat_project_test/static/css/main.cbd7154d.css.map",
     "main.78a2c481.js.map": "/cat_project_test/static/js/main.78a2c481.js.map"
   },
   "entrypoints": [
-    "static/css/main.1fcfb386.css",
+    "static/css/main.cbd7154d.css",
     "static/js/main.78a2c481.js"
   ]
 }
